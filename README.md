@@ -1,4 +1,4 @@
-# c_snippets
+# cnippets
 
 Code snippets. Mostly C. ( All are Public Domain. )
 ---------------------------------------------------
