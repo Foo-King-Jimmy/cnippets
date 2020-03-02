@@ -121,8 +121,18 @@ ls -al ./
 + sqlite3
 
 ---
+---
+
+Advice:
+
+If you happen to use the option **-DSQLITE_OMIT_AUTOINIT** when making/compiling the sqlite3 (libraries)
+
+then do not forget to use the following two function calls in your C program:
+
+int rc = sqlite3_initialize();
+
+int rc = sqlite3_shutdown();
+
+Usefull link: **https://sqlite.org/c3ref/initialize.html**
 
 ---
--DSQLITE_OMIT_AUTOINIT  \
-use sqlite3_init
-           _shutdown
