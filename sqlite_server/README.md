@@ -2,6 +2,12 @@
 readme
 
 
+#ifdef
+__linux__
+#error
+#endif
+
+
 #if 0
   gcc -c ./sqlive.client.0.c -o ccc.o
   gcc ccc.o -lc -o sql
