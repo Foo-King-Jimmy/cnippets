@@ -96,7 +96,7 @@ ls -al ./.libs
 
 Except the shell program **sqlite3** that is in **./** :
 
-ls -al .
+ls -al ./
 
 + sqlite3
 
