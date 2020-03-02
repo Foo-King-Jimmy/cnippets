@@ -10,6 +10,13 @@ You will need a C compiler (**gcc**), possibly other basic utilities (can not li
 
 You will definitely need Tcl (**tcl**, tclsh) to be successful.
 
+Usefull links:
++ Documentation : **https://sqlite.org/docs.html**
++ Download : **https://sqlite.org/download.html**
++ Compilation : **https://sqlite.org/howtocompile.html**
++ Configuration : **https://sqlite.org/compile.html**
++ PRAGMAs : **https://sqlite.org/pragma.html**
+
 ---
 
 Download the raw(est) source file ( , NOT the preprocessed C source ) !
@@ -100,13 +107,6 @@ ls -al .
 
 ---
 
-check sqlite.org website for doc
-link compile
-link pragmas
-link directives
-link download
-
-
 ./configure  \
    CFLAGS="  \
       -O2  \
@@ -118,7 +118,6 @@ link download
 
 use sqlite3_init
            _shutdown
-
 
 
      -DSQLITE_OMIT_WAL  
