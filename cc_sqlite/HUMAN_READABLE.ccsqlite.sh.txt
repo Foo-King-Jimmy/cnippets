@@ -1,5 +1,4 @@
 
-
 mkdir -m777  /tmp/ccsqlite  && 
 curl  https://www.sqlite.org/2020/sqlite-src-3310100.zip  --insecure --silent  --output /tmp/ccsqlite/sqlite.zip  && 
 cd  /tmp/ccsqlite  && 
@@ -77,5 +76,4 @@ find .  -name  "sqlite3"     >> _list_.txt  &&
 find .  -name  "sqlite3.o"   >> _list_.txt  && 
 find .  -name "*sqlite3.a"   >> _list_.txt  && 
 find .  -name "*sqlite3.so"  >> _list_.txt  && 
-echo  'DONE. END.'
-
+echo  'DONE. END.' 
