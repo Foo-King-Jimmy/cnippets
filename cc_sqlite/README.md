@@ -10,18 +10,17 @@ You will need a C compiler (**gcc**), possibly other basic utilities (can not li
 
 You will definitely need Tcl (**tcl**, tclsh) to be successful.
 
-Usefull links:
-+ Documentation : **https://sqlite.org/docs.html**
-+ Download : **https://sqlite.org/download.html**
-+ Compilation : **https://sqlite.org/howtocompile.html**
-+ Configuration : **https://sqlite.org/compile.html**
-+ PRAGMAs : **https://sqlite.org/pragma.html**
+Usefull links: Documentation : **https://sqlite.org/docs.html**
+
+Usefull links: Compilation : **https://sqlite.org/howtocompile.html**
 
 ---
 
 Download the raw(est) source file ( , NOT the preprocessed C source ) !
 
-Check the official website: **https://www.sqlite.org/download.html**
+Check the official website !
+
+Usefull links: Download : **https://sqlite.org/download.html**
 
 Scroll down for something like this:
 
@@ -106,6 +105,13 @@ ls -al .
 ---
 
 ---
+
+
+Usefull links: Compilation : **https://sqlite.org/howtocompile.html**
++ Configuration : **https://sqlite.org/compile.html**
++ PRAGMAs : **https://sqlite.org/pragma.html**
+
+
 
 ./configure  \
    CFLAGS="  \
