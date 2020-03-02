@@ -1,4 +1,8 @@
 
+get un-named struct
+for return values
+calloc this struct
+at end free this struct on heap
 
 // DAEMONIZE:
   if( 0 > ( g.procid = fork())) {  // 1st fork
