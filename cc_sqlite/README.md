@@ -66,9 +66,23 @@ For help one can type:
 
 ./configure --help | more
 
+Usefull link: Configuration : **https://sqlite.org/compile.html**
+
+Usefull link: PRAGMAs : **https://sqlite.org/pragma.html**
+
 ---
 
-Pay attention to the linking phase that may break on missing math library !
+Passing an extended **CFLAGS** variable to **./configure** :
+
+FOR ME a simple CFLAGS=" -O2 -Wall -Werror " was just not enough.
+
+I HAD TO add **-Wno-unused-but-set-variable** to avoid an error/warning and in order
+
+to actually yield the shell program **sqlite3** .
+
+
+
+Also pay attention to the linking phase that may break on missing math library !
 
 So do not forget **-lm** , or by giving this variable to **./configure** :
 
@@ -107,9 +121,6 @@ ls -al ./
 ---
 
 
-Usefull link: Compilation : **https://sqlite.org/howtocompile.html**
-Usefull link: Configuration : **https://sqlite.org/compile.html**
-Usefull link: PRAGMAs : **https://sqlite.org/pragma.html**
 
 
 
