@@ -1,6 +1,5 @@
+# DAEMONIZING
 
+---
 
-Squence of C code that is to daemonize a running process.
-Using double fork.
-Treating signals as well.
-
+This sequence of C code deals with how to daemonize a running process.
