@@ -1,8 +1,8 @@
 # How to compile sqlite from raw source
 
-**How to cc (c compile) sqlite (sqlite3) from the rawest source file**
+**How to cc (c compile) sqlite (sqlite3) from the rawest source**
 
-**to make  sqlite3, sqlite3.o, libsqlite3.a, libsqlite3.so,  etc.**
+**in order to make sqlite3, sqlite3.o, libsqlite3.a, libsqlite3.so, etc.**
 
 ---
 
@@ -12,11 +12,11 @@ You will definitely need Tcl (tcl, tclsh) to be successful.
 
 ---
 
-Download the raw(est) source,  NOT the preprocessed C source !
+Download the raw(est) source file ( , NOT the preprocessed C source ) !
 
-If you check the official website:  https://www.sqlite.org/download.html
+Check the official website: https://www.sqlite.org/download.html
 
-then look down, down ... for something like:
+Scroll down for something like this:
 
 ---
 
@@ -24,23 +24,23 @@ then look down, down ... for something like:
 
 sqlite-src-3310100.zip
 
-Snapshot of the complete (raw) source tree for SQLite version 3.31.1.
-
 (11.93 MiB)
+
+Snapshot of the complete (raw) source tree for SQLite version 3.31.1.
 
 See How To Compile SQLite for usage details.
 
 ---
 
-NOT:
+NOT for this:
 
 ---
 
 sqlite-preprocessed-3310100.zip
 
-Preprocessed C sources for SQLite version 3.31.1.
-
 (2.48 MiB)
+
+Preprocessed C sources for SQLite version 3.31.1.
 
 ---
 
