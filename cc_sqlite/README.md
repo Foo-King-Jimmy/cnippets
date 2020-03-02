@@ -84,7 +84,9 @@ Output should appear in the **.libs** subdirectory:
 
 ls -al ./.libs
 
-+ sqlite3.o libsqlite3.a libsqlite3.so
++ sqlite3.o
++ libsqlite3.a
++ libsqlite3.so
 
 Except the shell program **sqlite3** that is in **./** :
 
