@@ -1,10 +1,10 @@
 # cnippets
 
-Code snippets. Mostly C. ( All are Public Domain. )
----------------------------------------------------
+### Code snippets. Mostly C. ( All are Public Domain. )
+
+---
 
 2020-03-01
-
 
 The author disclaims Copyright to these source codes.
 
