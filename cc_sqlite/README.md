@@ -66,21 +66,27 @@ For help one can type:
 
 ./configure --help | more
 
-Usefull link: Configuration : **https://sqlite.org/compile.html**
-
-Usefull link: PRAGMAs : **https://sqlite.org/pragma.html**
-
 ---
 
 Passing an extended **CFLAGS** variable to **./configure** :
 
 FOR ME a simple CFLAGS=" -O2 -Wall -Werror " was just not enough.
 
-I HAD TO add **-Wno-unused-but-set-variable** to avoid an error/warning and in order
+I HAD TO add **-Wno-unused-but-set-variable** to avoid an error/warning
 
-to actually yield the shell program **sqlite3** .
+and in order to actually yield the shell program **sqlite3** .
 
+Now this is the time to customize the outputs/libraries
 
+by listing all options in **CFLAGS** you need, e.g.:
+
+CFLAGS=" -O2 -Wall -Werror -Wno-unused-but-set-variable -DSQLITE_OMIT_WAL -DSQLITE_THREADSAFE=0 "
+
+Usefull link: Configuration : **https://sqlite.org/compile.html**
+
+Usefull link: PRAGMAs : **https://sqlite.org/pragma.html**
+
+---
 
 Also pay attention to the linking phase that may break on missing math library !
 
@@ -117,25 +123,6 @@ ls -al ./
 ---
 
 ---
-
----
-
-
-
-
-
-./configure  \
-   CFLAGS="  \
-      -O2  \
-      -Wall  \
-      -Werror  \
-      -Wno-unused-but-set-variable  \
-
 -DSQLITE_OMIT_AUTOINIT  \
-
 use sqlite3_init
            _shutdown
-
-
-     -DSQLITE_OMIT_WAL  
-        -DSQLITE_THREADSAFE=0 "  \
