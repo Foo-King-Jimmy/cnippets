@@ -1,0 +1,158 @@
+
+
+// DAEMONIZE:
+  if( 0 > ( g.procid = fork())) {  // 1st fork
+    perror( " FATALERROR :  error of 1st fork().\n" );
+    return( FATALERROR );
+  }
+  if( g.procid ) return 0;  // parent returns
+  if( (pid_t) -1 == setsid()) {
+    perror( " FATALERROR :  error of setsid().\n" );
+    return( FATALERROR );
+  }
+
+  // SIGNAL HANDLING:
+  // http://man7.org/linux/man-pages/man7/signal.7.html
+  // https://stackoverflow.com/questions/10046916/is-it-possible-to-ignore-all-signals
+  // Block all real-time signals:
+  if(( sigemptyset( &serversignalset ))) {
+    perror( " FATALERROR :  At start sigemptyset() failed, terminating.\n" );
+    return( FATALERROR );
+  }
+  for( indexi = SIGRTMIN; SIGRTMAX >= indexi; ++indexi ) {
+    if(( sigaddset( &serversignalset, indexi ))) {
+      perror( " FATALERROR :  At start sigaddset() failed, terminating.\n" );
+      return( FATALERROR );
+    }
+  }
+  if(( sigprocmask( SIG_SETMASK, &serversignalset, NULL ))) {
+    perror( " FATALERROR :  At start sigprocmask() failed, terminating.\n" );
+    return( FATALERROR );
+  }
+  // Impossible to deal with:
+    // SIGKILL
+    // SIGSTOP
+  // Ignoring:
+  (void) signal( SIGCHLD,   SIG_IGN );  // important to ignore to avoid filling up proc-table
+  (void) signal( SIGTERM,   SIG_IGN );
+  (void) signal( SIGTRAP,   SIG_IGN );
+  (void) signal( SIGQUIT,   SIG_IGN );
+  (void) signal( SIGALRM,   SIG_IGN );
+  (void) signal( SIGINT,    SIG_IGN );
+  (void) signal( SIGHUP,    SIG_IGN );
+  (void) signal( SIGUSR1,   SIG_IGN );
+  (void) signal( SIGUSR2,   SIG_IGN );
+#ifdef  SIGEMT
+  (void) signal( SIGEMT,    SIG_IGN );
+#endif
+  (void) signal( SIGTSTP,   SIG_IGN );
+  (void) signal( SIGTTIN,   SIG_IGN );
+  (void) signal( SIGTTOU,   SIG_IGN );
+  (void) signal( SIGURG,    SIG_IGN );
+  (void) signal( SIGPROF,   SIG_IGN );
+  (void) signal( SIGIO,     SIG_IGN );
+  (void) signal( SIGPWR,    SIG_IGN );
+  (void) signal( SIGWINCH,  SIG_IGN );
+  (void) signal( SIGVTALRM, SIG_IGN );
+  (void) signal( SIGSTKFLT, SIG_IGN );
+  // Leave them as they are:
+    // !!! add sigaction signal-handler !!!
+    // SIGSEGV  - may send DBG info/mail
+    // SIGFPE   - may send DBG info/mail
+    // SIGPIPE  - may send DBG info/mail
+    // SIGXCPU  - may send DBG info/mail
+    // SIGBUS   - may send DBG info/mail
+    // SIGILL   - may send DBG info/mail
+    // SIGXFSZ  - may send DBG info/mail
+    // SIGSYS   - may send DBG info/mail
+    // !!! add sigaction signal-handler !!!
+    //
+    // SIGABRT  - just leave - used by the foo: abort()
+    // SIGCONT  - just leave
+  // INFO/WARNING:
+    // Be aware that if sending email/dbg-info-mail by signal-handlers
+    // then it can cause too many emails sent out if done in the children
+    // processes that are independent of spawner's global-dbg-struct's
+    // last-email-time (time_t variable).
+
+  if( 0 > ( g.procid = fork())) {  // 2nd fork
+    perror( " FATALERROR :  error of 2nd fork().\n" );
+    return( FATALERROR );
+  }
+  if( g.procid ) return 0;  // parent returns
+
+  // CHILD :
+  // Server-Spawner-process:
+  g.procid = getpid();
+
+  (void) umask( (mode_t)( S_IRGRP | S_IWGRP | S_IXGRP | S_IROTH | S_IWOTH | S_IXOTH ));  // 0077
+  // ... might chdir() here ...
+  // ... if( 0 > chdir( A_HOME_DIR_PATH )) ERROR-happened;
+
+  fclose( stdin  );
+  fclose( stdout );
+  DBG {
+    fprintf( stderr, " Will NOT close \'stderr\'.\n" );
+  }
+  else {
+    fclose( stderr );
+    http.contentlengthvalue = (long) sysconf( _SC_OPEN_MAX );  // temply reusing this var
+    if( -1 == http.contentlengthvalue ) {
+      perror( " FATALERROR :  error of sysconf() on OPEN_MAX.\n" );
+      return( FATALERROR );
+    }
+    for( ; 0 <= http.contentlengthvalue; --http.contentlengthvalue )
+      close( http.contentlengthvalue );
+  }
+  // Re-opening STD*/IN/OUT/ERR on /dev/null for place-holding:  // re-using (int) indexi
+  DBG  { }
+  else {
+    if( -1 == ( indexi = open( "/dev/null", O_WRONLY ))) {
+      fprintf( stderr, " ERROR :  Failure of open() - 1 .\n" );
+      return( FATALERROR );
+    }
+    if( STDERR_FILENO != indexi ) {
+      if( -1 == dup2( indexi, STDERR_FILENO )) {
+        fprintf( stderr, " ERROR :  Failure of dup2() - 1 .\n" );
+        return( FATALERROR );
+      }
+      (void) close( indexi );
+    }
+  }
+  if( -1 == ( indexi = open( "/dev/null", O_RDONLY ))) {
+    fprintf( stderr, " ERROR :  Failure of open() - 2 .\n" );
+    return( FATALERROR );
+  }
+  if( STDIN_FILENO != indexi ) {
+    if( -1 == dup2( indexi, STDIN_FILENO )) {
+      fprintf( stderr, " ERROR :  Failure of dup2() - 2 .\n" );
+      return( FATALERROR );
+    }
+    (void) close( indexi );
+  }
+  if( -1 == ( indexi = open( "/dev/null", O_WRONLY ))) {
+    fprintf( stderr, " ERROR :  Failure of open() - 3 .\n" );
+    return( FATALERROR );
+  }
+  if( STDOUT_FILENO != indexi ) {
+    if( -1 == dup2( indexi, STDOUT_FILENO )) {
+      fprintf( stderr, " ERROR :  Failure of dup2() - 3 .\n" );
+      return( FATALERROR );
+    }
+    (void) close( indexi );
+  }
+
+  if(( pidlogfp = fopen( pidlogfile, "rb" ))) {
+    fprintf( stderr, " ERROR :  PID log-file exists, 2nd check.\n" );
+    fclose( pidlogfp );
+    return( FATALERROR );
+  }
+  if( !( pidlogfp = fopen( pidlogfile, "wb" ))) {
+    fprintf( stderr, " ERROR :  Failure to wb-open PID log-file.\n" );
+    return( FATALERROR );
+  }
+  fprintf( pidlogfp, "%ld", (long) g.procid );
+  fclose( pidlogfp );
+  // end-of-daemonizing-part
+  
+  
