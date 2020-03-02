@@ -16,4 +16,13 @@ __linux__
   ./sqlive test.1.db
 #endif
 
+gcc -lm
+-lc server sqlive
+
+
+./sqlive test.sqlite3db &
+sql "SELECT * FROM Cars;"
+
+// u may use sqlite_init
+// u may use sqlite_shutdown
 
