@@ -1,9 +1,10 @@
+## How to compile sqlite from the rawest source
 
-
-How to cc (c compile) sqlite (sqlite3, sqlite3.o, libsqlite3.a, libsqlite3.so) from the rawest source.
+### How to cc (c compile) sqlite (sqlite3, sqlite3.o, libsqlite3.a, libsqlite3.so) from the rawest source.
 
 
 use -lm
+
 use sqlite3_init
            _shutdown
 ...
