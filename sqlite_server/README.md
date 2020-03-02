@@ -7,6 +7,12 @@ __linux__
 #error
 #endif
 
+#ifndef DEBUG
+#error Only Debug builds are supported
+#endif
+quoted
+
+
 
 #if 0
   gcc -c ./sqlive.client.0.c -o ccc.o
@@ -18,6 +24,10 @@ __linux__
 
 gcc -lm
 -lc server sqlive
+
+sqlite3.o
+libsqlite3.a
+libsqlite3.so.0.8.6
 
 
 ./sqlive test.sqlite3db &
