@@ -11,9 +11,9 @@ needed !!!
 
 ---
 
-cd /tmp/ccsqlite/sqlite*  &&  gcc -c client.c -O2 -Wall -Werror -o client.o 2> __ERR__1.txt 1> __OUT__1.txt 
+gcc -c client.c -O2 -Wall -Werror -o client.o 2> __ERR__1.txt 1> __OUT__1.txt 
 
-cd /tmp/ccsqlite/sqlite*  &&  gcc client.o -lc -o sql  2> __ERR__2.txt 1> __OUT__2.txt 
+gcc client.o -lc -o sql  2> __ERR__2.txt 1> __OUT__2.txt 
 
 
 !!!
@@ -22,9 +22,6 @@ cd /tmp/ccsqlite/sqlite*  &&  gcc client.o -lc -o sql  2> __ERR__2.txt 1> __OUT_
  .. .. .. gcc server.o ./.libs/sqlite3.o **-lm** -lc  -o sqlite_server
 
 ///// gcc server.o    -lsqlite3 **-lm** -lc  -o sqlite_server
-
-
-remove background & at the end of ./sqlite_server test.db &
 
 
 ./sqlite_server test.sqlite3db 
@@ -47,7 +44,7 @@ gcc server.o sqlite3.o -lm -lc -o sqlite_server
 
 gcc server.o -l:/lib/path/libsqlite3.so.0.8.6 -lm -lc -o sqlite_server
 
-./sqlite_server test.sqlite3db &
+./sqlite_server test.sqlite3db
 
 ---
 
@@ -58,6 +55,6 @@ gcc server.o -l:/lib/path/libsqlite3.so.0.8.6 -lm -lc -o sqlite_server
 
 ---
 
-./sqlite_server test.sqlite3db &
+./sqlite_server test.sqlite3db
 
 sql "SELECT * FROM Cars;"
