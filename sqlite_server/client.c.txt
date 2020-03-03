@@ -4,7 +4,7 @@
 /**  Usage:
      # gcc -c client.c -O2 -Wall -Werror -o client.o
      # gcc    client.o -lc               -o sql
-     # ./sqlite_server test.sqlite3db &
+     # ./sqlite_server test.sqlite3db
      # ./sql "SELECT * FROM Cars;"
 **/
 
