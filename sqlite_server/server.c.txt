@@ -3,8 +3,8 @@
 
 /**  Usage:
      # gcc -c server.c -O2 -Wall -Werror -o server.o
-     # gcc server.o sqlite3.o    -lm -lc -o sqlite_server
-or   # gcc server.o    -lsqlite3 -lm -lc -o sqlite_server
+     # gcc server.o    sqlite3.o -lm -lc -o sqlite_server
+or   # gcc server.o  -lsqlite3   -lm -lc -o sqlite_server
      # ./sqlite_server test.sqlite3db
      # ./sql "SELECT * FROM Cars;"
 **/
