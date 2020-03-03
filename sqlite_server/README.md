@@ -2,21 +2,13 @@
 
 **Working, but absolutelly BASIC skeleton C code***
 
-**Sorry, only for Linux***
-
-#ifdef
-
-__linux__
-
-#error
-
-#endif
+**Sorry, only for Linux**
 
 ---
 
-#ifndef DEBUG
+#ifndef __linux__
 
-#error "Only Debug builds are supported"
+#error "Sorry, only for Linux."
 
 #endif
 
