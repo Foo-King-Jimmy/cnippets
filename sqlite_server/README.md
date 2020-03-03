@@ -5,6 +5,10 @@
 **Sorry, only for Linux**
 
 ---
+-lm
+needed !!!
+
+
 
 gcc -c ./sqlive.client.0.c -O2 -Wall -Werror -o client.o
 
