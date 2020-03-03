@@ -1,6 +1,6 @@
 # Server-Client front for the sqlite3 library
 
-**Working, but absolutelly BASIC skeleton C code***
+**Working, but absolutelly BASIC skeleton C code**
 
 **Sorry, only for Linux**
 
@@ -20,7 +20,11 @@ gcc client.o -lc -o sql
 
 gcc -c ./sqlive.server.7.c -O2 -Wall -Werror -o server.o
 
-gcc server.o  /usr/lib/i386-linux-gnu/libsqlite3.so.0.8.6 -lm -lc -o sqlite_server
+gcc server.o -lsqlite3 -lm -lc -o sqlite_server
+
+gcc server.o sqlite3.o -lm -lc -o sqlite_server
+
+gcc server.o -l:/lib/path/libsqlite3.so.0.8.6 -lm -lc -o sqlite_server
 
 ./sqlite_server test.sqlite3db &
 
@@ -35,6 +39,16 @@ gcc server.o  /usr/lib/i386-linux-gnu/libsqlite3.so.0.8.6 -lm -lc -o sqlite_serv
 ./sqlite_server test.sqlite3db &
 
 sql "SELECT * FROM Cars;"
+
+
+
+---
+
+---
+
+---
+
+---
 
 // u may use sqlite_init
 
