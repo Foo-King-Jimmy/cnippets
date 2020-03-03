@@ -6,14 +6,6 @@
 
 ---
 
-#ifndef __linux__
-
-#error "Sorry, only for Linux."
-
-#endif
-
----
-
 gcc -c ./sqlive.client.0.c -O2 -Wall -Werror -o client.o
 
 gcc client.o -lc -o sql
@@ -33,25 +25,10 @@ gcc server.o -l:/lib/path/libsqlite3.so.0.8.6 -lm -lc -o sqlite_server
 + sqlite3.o
 + libsqlite3.a
 + libsqlite3.so.0.8.6
++ -lsqlite3
 
 ---
 
 ./sqlite_server test.sqlite3db &
 
 sql "SELECT * FROM Cars;"
-
-
-
----
-
----
-
----
-
----
-
-not needed:
-
-// u may use sqlite_init
-
-// u may use sqlite_shutdown
