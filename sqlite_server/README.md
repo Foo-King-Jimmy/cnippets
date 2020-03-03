@@ -1,18 +1,18 @@
-# Server-Client front for the sqlite3 library
+# Rudimentary Server-Client front for the sqlite3 library
 
-**Working, but absolutely basic, rudimentary, skeleton C code**
+**Working, but absolutely basic skeleton C code**
 
 **Sorry, only for Linux**
 
+**Using UNIX DOMAIN SOCKET**
+
 ---
 
-no error recovery
-
-no real error checking
-
-no dot commands
-
-just a skeleton program
++ no error recovery
++ no real error checking
++ no dot commands
++ just a skeleton program
++ next to useless
 
 ---
 
@@ -26,7 +26,7 @@ gcc    client.o -lc               -o sql
 
 gcc -c server.c -O2 -Wall -Werror -o server.o
 
-gcc server.o    sqlite3.o -lm -lc -o sqlite_server
+gcc server.o    sqlite3.o **-lm** -lc -o sqlite_server
 
 or
 
