@@ -1,6 +1,6 @@
 # Server-Client front for the sqlite3 library
 
-**Working, but absolutelly BASIC skeleton C code**
+**Working, but absolutely BASIC skeleton C code**
 
 **Sorry, only for Linux**
 
@@ -49,6 +49,8 @@ sql "SELECT * FROM Cars;"
 ---
 
 ---
+
+not needed:
 
 // u may use sqlite_init
 
