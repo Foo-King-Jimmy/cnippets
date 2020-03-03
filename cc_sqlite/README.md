@@ -135,4 +135,8 @@ int rc = sqlite3_shutdown();
 
 Usefull link: **https://sqlite.org/c3ref/initialize.html**
 
+Also I found it necessary to link any C program with **-lm**
+
+that is linked with (lib)**sqlite3**(.o/.so/.a) .
+
 ---
