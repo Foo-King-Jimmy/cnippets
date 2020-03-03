@@ -9,6 +9,31 @@
 needed !!!
 
 
+---
+
+cd /tmp/ccsqlite/sqlite*  &&  gcc -c client.c -O2 -Wall -Werror -o client.o 2> __ERR__1.txt 1> __OUT__1.txt 
+
+cd /tmp/ccsqlite/sqlite*  &&  gcc client.o -lc -o sql  2> __ERR__2.txt 1> __OUT__2.txt 
+
+
+!!!
+
+ .. .. .. gcc -c server.c -O2 -Wall -Werror -o server.o 
+ .. .. .. gcc server.o ./.libs/sqlite3.o **-lm** -lc  -o sqlite_server
+
+///// gcc server.o    -lsqlite3 **-lm** -lc  -o sqlite_server
+
+
+remove background & at the end of ./sqlite_server test.db &
+
+
+./sqlite_server test.sqlite3db 
+./sql "SELECT * FROM Cars;"
+
+
+
+
+---
 
 gcc -c ./sqlive.client.0.c -O2 -Wall -Werror -o client.o
 
