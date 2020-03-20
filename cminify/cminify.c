@@ -1,11 +1,11 @@
-#!/usr/local/bin/tcc -run
+#!/usr/local/bin/tcc  -run
 
 
-/*  cmin.c
-**  cminify.c  */
+/**   cminify.c   **/
 
-// USAGE:  cminify.c source_and_destination_filename
-//    or   cminify.c source_filename destination_filename
+
+// USAGE:   $  cminify  source_and_destination_filename
+//    or    $  cminify  source_filename   destination_filename
 
 #include  <stdio.h>
 #include  <stdlib.h>
@@ -27,7 +27,6 @@ main( int argc, char **argv ) {
     return -1;
   }
 
-
 // Open, check length, malloc & read into buffer :
  FILE * f1 = fopen( argv[ 1 ], "rb" );
   if( !f1 ) { fprintf( stderr, "\n! ERROR: fopen() !\n" ); return -1; }
@@ -41,7 +40,6 @@ main( int argc, char **argv ) {
   fclose( f1 );
  char * end = spot;  // text + len;
  char * out = spot = text;
-
 
 // cheol :  \r\n => \n
 // erase/change:  \r \e \b \a \v \f \t
@@ -60,7 +58,6 @@ main( int argc, char **argv ) {
   }
   *out = '\0'; end = out;
 
-
 // line-folding:
 // fold "\\\n" line-breaks :
  char * prev = out = spot = text; ++spot;
@@ -69,7 +66,6 @@ main( int argc, char **argv ) {
     else { *out = *prev; ++out; ++prev; ++spot; }
   }
   *out = '\0'; end = out;
-
 
 // Remove all ( c- and cpp-style ) comments :
  int inccomment   = 0,
@@ -142,7 +138,6 @@ main( int argc, char **argv ) {
   }  // while
   *out = '\0'; end = out;
 
-
 // Leave only 1 space :
 // (1st.)
   inquote = 0;
@@ -189,7 +184,6 @@ main( int argc, char **argv ) {
   }  // while
   *out = '\0'; end = out;
 
-
 // Interim transformation :  '\n #' => '\n#'
 // This can NOT be in quote !  ( \n )
  char * next;
@@ -207,7 +201,6 @@ main( int argc, char **argv ) {
     else { *out = *prev; ++out; ++prev; ++spot; ++next; }
   }  // while
   *out = '\0'; end = out;
-
 
 // Remove unneeded \n :
 // This can NOT be in quote !  ( \n )
@@ -229,9 +222,7 @@ main( int argc, char **argv ) {
   }  // while
   *out = '\0'; end = out;
 
-
 // ALL \n ARE MANDATORY !!! by now
-
 
 // Leave only 1 space :
 // (2nd.)
@@ -278,7 +269,6 @@ main( int argc, char **argv ) {
     *out = *prev; ++out; ++prev; ++spot;  // default action of inquote
   }  // while
   *out = '\0'; end = out;
-
 
 // Misc. space-cutting if !inquote :
 // (1st.)
@@ -358,7 +348,6 @@ main( int argc, char **argv ) {
     *out = *prev; ++out; ++prev; ++spot;  // default action of inquote
   }  // while
   *out = '\0'; end = out;
-
 
 // Leave only 1 space :
 // (3rd.)
@@ -406,7 +395,6 @@ main( int argc, char **argv ) {
   }  // while
   *out = '\0'; end = out;
 
-
 // Transformation :  '\n ' => '\n' ; ' \n' => '\n'
 // This can NOT be in quote !  ( \n )
   prev = out = spot = text; ++spot;
@@ -423,7 +411,6 @@ main( int argc, char **argv ) {
     *out = *prev; ++out; ++prev; ++spot;
   }  // while
   *out = '\0'; end = out;
-
 
 // Misc. space-cutting if !inquote :
 // (2nd.)
@@ -504,7 +491,6 @@ main( int argc, char **argv ) {
   }  // while
   *out = '\0'; end = out;
 
-
 // Leave only 1 space :
 // (4th.)
   inquote = 0;
@@ -550,7 +536,6 @@ main( int argc, char **argv ) {
     *out = *prev; ++out; ++prev; ++spot;  // default action of inquote
   }  // while
   *out = '\0'; end = out;
-
 
 // Join quotes :
 // "..."  "...." => "......"
@@ -616,9 +601,7 @@ main( int argc, char **argv ) {
   }  // while
   *out = '\0'; end = out;
 
-
 // END OF MINIFYING .
-
 
 // Write buffer back into file :
   f1 = fopen( 2 < argc ? argv[ 2 ] : argv[ 1 ], "wb" );
@@ -630,5 +613,4 @@ main( int argc, char **argv ) {
 
  return 0;
 }
-
 
