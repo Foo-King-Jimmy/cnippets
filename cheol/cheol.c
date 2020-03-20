@@ -1,7 +1,8 @@
-#!/usr/local/bin/tcc -run
+#!/usr/local/bin/tcc  -run
 
 
 /**   cheol.c   **/
+
 
 // USAGE:  cheol.c [-uw] file1 [ file2 ... fileN ]
 //         cheol.c  -u   file   => [unix] delete all \r, only \n left
@@ -107,5 +108,4 @@ main( int argc, char **argv )  {
 
  return 0;
 }
-
 
