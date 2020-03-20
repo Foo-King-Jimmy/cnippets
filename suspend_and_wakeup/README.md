@@ -50,20 +50,22 @@ All possible types for the program : standby, freeze, disk, s2idle, shallow  and
 
 + Type this for immediately suspend the computer and wake it up in a minute from RAM (deep) mode:
 
+**$** sudo su
+
 **$** ./suspendandwakeup 0 1
 
++ Type this for suspend after one minute for a hour long suspension in Suspend-To-Idle mode:
 
+**$** sudo su
 
+**$** ./suspendandwakeup 1 60 freeze
 
+---
 
+**Notes:**
 
++ From hibernation ('disk') the computer did NOT wake up (for me).
++ The mode 'standby' did NOT work for me, did NOT enter suspend at all.
++ Simply use only the (default) 'deep' mode, it is superior solution, anyway.
 
-
-
-
-
-
-
-
-
-
+---
