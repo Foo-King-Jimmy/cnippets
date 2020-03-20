@@ -78,3 +78,4 @@ find .  -name "*sqlite3.a"   >> _list_.txt  &&
 find .  -name "*sqlite3.so"  >> _list_.txt  && 
 echo  'DONE. END.' 
 
+
