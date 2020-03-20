@@ -1,7 +1,7 @@
 #!/usr/local/bin/tcc  -run
 
 
-/* ident: suspendandwakeup.c */
+/* ident: suspend_and_wakeup.c */
 
 
 #ifndef   __linux__
