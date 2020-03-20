@@ -4,4 +4,6 @@
 
 ---
 
-Sometimes I convert **/n** into **/r/n** or vica versa. That is all.
+Sometimes I convert **/n** into **/r/n** and vica versa. That is all.
+
+---
