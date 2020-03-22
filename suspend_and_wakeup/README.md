@@ -67,5 +67,7 @@ All possible types for the program : standby, freeze, disk, s2idle, shallow  and
 + From hibernation ('disk') the computer did NOT wake up (for me).
 + The mode 'standby' did NOT work for me, did NOT enter suspend at all.
 + Simply use only the (default) 'deep' mode, it is superior solution, anyway.
++ **Problems may emerge after (this kind of) suspend!**
++ **For example I experienced IO errors on mounted (flash card based) filesystems.**
 
 ---
