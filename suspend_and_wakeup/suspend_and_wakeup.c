@@ -52,6 +52,7 @@ main( int argc, char **argv ) {
         modechoice      = OPT_DEEP;
 
  // See: https://www.kernel.org/doc/Documentation/power/states.txt
+ // Extra: https://www.landley.net/kdocs/ols/2008/ols2008v1-pages-39-52.pdf
  const char  syspowerstate[ ] = "/sys/power/state",
              syspowermem  [ ] = "/sys/power/mem_sleep";
 
