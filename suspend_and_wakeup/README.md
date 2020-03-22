@@ -74,3 +74,4 @@ All possible types for the program : standby, freeze, disk, s2idle, shallow  and
 + **}**
 
 ---
+
