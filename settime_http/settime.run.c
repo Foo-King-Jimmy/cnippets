@@ -35,7 +35,7 @@ main( int argc, char **argv ) {
 ///// 0.5 means 500 milliseconds
 ///// curl --max-time 0.9  https://example.com/
 ///// User-Agent: ff (friendlyfire)
-
+///// --silent --location --error-quit
 
 
 //  http://man7.org/linux/man-pages/man2/clock_settime.2.html
