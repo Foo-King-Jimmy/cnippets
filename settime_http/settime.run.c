@@ -13,6 +13,16 @@ int
 main( int argc, char **argv ) {
 
 
+/*  GET URL header+body > into 2 files w curl ,
+    parse header for - 200
+                     - Date: header to get TIME_1_URL
+    parse body for TIME_2_UNIX
+    sanity checks
+    settime() in Linux
+*/
+
+
+
 //  https://www.time.gov/zzz__c4e4433c0157b757f0b0bb53565e1e6473ad7eca.cgi?disablecache=
 //    <timestamp time2="1585125652133852" time3="1585125652133868"/>
 //    <timestamp time2="1585125652 133852" \
@@ -20,6 +30,11 @@ main( int argc, char **argv ) {
 ////  http://worldclockapi.com/api/json/utc/now
 
 
+
+///// timeout error code (28)
+///// 0.5 means 500 milliseconds
+///// curl --max-time 0.9  https://example.com/
+///// User-Agent: ff (friendlyfire)
 
 
 
