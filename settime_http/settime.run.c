@@ -30,6 +30,15 @@ main( int argc, char **argv ) {
 ////  http://worldclockapi.com/api/json/utc/now
 
 
+/*
+Usage: tcc [options...] [-o outfile] [-c] infile(s)...
+       tcc [options...] -run infile [arguments...]
+  -Idir       add include path 'dir'
+  -llib       link with dynamic or static library 'lib'
+  -Wl,-opt[=val]  set linker option (see tcc -hh)
+  -g          generate runtime debug info
+  -x[c|a|b|n] specify type of the next infile (C,ASM,BIN,NONE)
+*/
 
 /* * *  /etc/init.d/settime.sh
         /usr/bin/getTime.sh
