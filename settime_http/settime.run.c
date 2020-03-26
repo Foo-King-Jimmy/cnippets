@@ -31,6 +31,14 @@ main( int argc, char **argv ) {
 
 
 
+/* * *  /etc/init.d/settime.sh
+        /usr/bin/getTime.sh
+        cat /etc/sysconfig/ntpserver                 // pool.ntp.org
+        /usr/sbin/ntpd -q -p $NTPSERVER
+        /etc/ntp.conf :  No such file or directory
+* * */
+
+
 ///// timeout error code (28)
 ///// 0.5 means 500 milliseconds
 ///// curl --max-time 0.9  https://example.com/
