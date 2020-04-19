@@ -69,10 +69,10 @@ All possible types for the program : standby, freeze, disk, s2idle, shallow  and
 + Simply use only the (default) 'deep' mode, it is superior solution, anyway.
 
 + **All kinds of problems may emerge after (this kind of) suspend! (Especially on complex systems.)**
-+ **For example I experienced IO errors on mounted (flash card based) filesystems,**
-+ **that I could remedy by manually umount()ing and mount()ing back the drives.**
++ **For example I experienced IO errors on mounted (flash card based) filesystems.**
 
 **It seems I solved this IO problem by:**
+
 + umount(2) -ing (all) drives
 + rmmod(8) -ing two (kernel) modules:  ( rmmod xhci_pci  &&  rmmod xhci_hcd )
 + SUSPEND  =>  WAKE-UP
