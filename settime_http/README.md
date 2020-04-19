@@ -1,25 +1,31 @@
-# x
+# set time by (a) http (page)
 
-**later**
+**Only for demonstration, do NOT actually use this!**
 
-x
+---
 
-regexsearch( const char * string, const char * regexpattern ) {
-int
-fdmmap( int fdesc, int fsize, const char **here ) {
-+libcurl
-    in C
-not a replacement of NTP
-////////////////////////////////////////////////////////////////////////////////////
-////// USE OF THIS .CGI BY OUTSIDE SITES OR APPLICATIONS IS STRICTLY PROHIBITED ////
-// OR USING THE TIME FROM THIS SITE IN ANY WAY FOR OTHER SITES IS ALSO PROHIBITED //
-///////////////////////////////////////////////////////////////////////////////////
-#define   TIMEGOV   "https://www.time.gov/"
-#error   "This file is only for demonstration, do NOT actually use it! See these lines down !"
-/**  Excerpt from file downloaded from www.time.gov  **/
-////////////////////////////////////////////////////////////////////////////////////
-////// USE OF THIS .CGI BY OUTSIDE SITES OR APPLICATIONS IS STRICTLY PROHIBITED ////
-// OR USING THE TIME FROM THIS SITE IN ANY WAY FOR OTHER SITES IS ALSO PROHIBITED //
-///////////////////////////////////////////////////////////////////////////////////
++ This script updates the system-time.
++ Obviously, NOT a replacement of NTP.
++ Depends on (lib)curl.
 
+Some info/functions on:
++ how to use libcurl,
++ how to mmap a file,
++ how to parse it with (extended) regex in C.
+
+**DO NOT ACTUALLY USE THIS SCRIPT!**
+because
+
+timestamp is gained from the site/page:  https://www.time.gov/
+
+and
+
+they prohibit the actual usage of their timestamp and servers.
+
+Excerpt from (a) file downloaded from  www.time.gov :
+
++ ////////////////////////////////////////////////////////////////////////////////////
++ ////// USE OF THIS .CGI BY OUTSIDE SITES OR APPLICATIONS IS STRICTLY PROHIBITED ////
++ // OR USING THE TIME FROM THIS SITE IN ANY WAY FOR OTHER SITES IS ALSO PROHIBITED //
++ ///////////////////////////////////////////////////////////////////////////////////
 
