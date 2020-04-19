@@ -67,9 +67,19 @@ All possible types for the program : standby, freeze, disk, s2idle, shallow  and
 + From hibernation ('disk') the computer did NOT wake up (for me).
 + The mode 'standby' did NOT work for me, did NOT enter suspend at all.
 + Simply use only the (default) 'deep' mode, it is superior solution, anyway.
+
 + **All kinds of problems may emerge after (this kind of) suspend! (Especially on complex systems.)**
 + **For example I experienced IO errors on mounted (flash card based) filesystems,**
 + **that I could remedy by manually umount()ing and mount()ing back the drives.**
+
+**It seems I solved this IO problem by:**
++ umount(2) -ing (all) drives
++ rmmod(8) -ing two (kernel) modules:  ( rmmod xhci_pci  &&  rmmod xhci_hcd )
++ SUSPEND  =>  WAKE-UP
++ insmod(8) -ing back the modules after wake-up:
++ **$** insmod /lib/modules/...something.../kernel/drivers/usb/host/xhci-hcd.ko.gz
++ **$** insmod /lib/modules/...something.../kernel/drivers/usb/host/xhci-pci.ko.gz
++ mount(2) -ing back the drives
 
 ---
 
