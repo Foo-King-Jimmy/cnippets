@@ -1,0 +1,6 @@
+# WMD - WHIRLPOOL MESSAGE DIGEST
+
+---
+
+**Later**
+
