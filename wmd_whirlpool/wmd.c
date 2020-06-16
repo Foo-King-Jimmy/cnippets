@@ -975,10 +975,8 @@ int
 main ( int argc, char **argv ) {
 
  const char   example__1[ ] = "The quick brown fox jumps over the lazy dog";
- const char   solution_1[ ] = "b97de512e91e3828B40d2b0fdce9ceb3c4a71f9bea8d88e75c4fa854df36725f"  \
+ const char   solution_1[ ] = "b97de512e91e3828b40d2b0fdce9ceb3c4a71f9bea8d88e75c4fa854df36725f"  \
                               "d2b52eb6544edcacd6f8beddfea403cb55ae31f03ad62a5ef54e42ee82c3fb35"  ;
-// const char   solution_1[ ] = "B97DE512E91E3828B40D2B0FDCE9CEB3C4A71F9BEA8D88E75C4FA854DF36725F"  \
-//                              "D2B52EB6544EDCACD6F8BEDDFEA403CB55AE31F03AD62A5EF54E42EE82C3FB35"  ;
        char   buffer[ 129 ];
        char * resultptr = NULL;
 
