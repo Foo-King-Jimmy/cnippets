@@ -1,12 +1,16 @@
 /* ident: wmd.c */
 
 
-// FORWARD :
+#include  <stdint.h>
+#include  <stdio.h>
+#include  <string.h>
+
+// FORWARD:
+
 // char * wmd ( const char * /* data */,
 //              uint32_t /* datalength */,
 //              char * /* hashbuffer */      // min: [ 128 ]
 //            );
-
 
 // ! This function gives correct hashes only if on 64-bit platform !
 
@@ -965,11 +969,7 @@ WMD_PROCBUF_IN:  ;
  return hashbuffer;  // BOGUS ! - to silence a compiler warning.
 }
 
-/* *************************************************************** */
-
-/** TEST:
-
-#include  <stdio.h>
+/** TEST: ********************************************************* **
 
 int
 main ( int argc, char **argv ) {
@@ -983,7 +983,6 @@ main ( int argc, char **argv ) {
        char * resultptr = NULL;
 
   (void) printf( "\n\n TEST started:\n\n" );
-
   (void) printf( "   - example to hash:  %s\n", example__1 );
   (void) memset( buffer, 0, sizeof(buffer) );
   resultptr = wmd( example__1, (uint32_t) strlen( example__1 ), buffer );
