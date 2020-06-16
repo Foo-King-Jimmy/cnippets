@@ -4,6 +4,19 @@
 
 **Later**
 
+---
+
+A single function (wrapper) around the whirlpool hashing.
+
+Example of usage in the wmd.c code to be found.
+
+
+No correct hashes yielded on 32-bit system !
+
+   Correct hashes yielded on 64-bit system .
+
+---
+
 wikipedia pages:
 
 https://en.wikipedia.org/wiki/Whirlpool_(hash_function)
