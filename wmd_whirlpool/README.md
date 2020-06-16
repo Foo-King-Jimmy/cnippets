@@ -2,22 +2,25 @@
 
 ---
 
-**Later**
+**WARNING:**
+
+( As far as I checked, MY function gives ... )
+
+No correct hashes/test-vectors on **32-bit** system !
+
+   Correct hashes/test-vectors on **64-bit** system .
 
 ---
 
-A single function (wrapper) around the whirlpool hashing.
+**About:**
 
-Example of usage in the wmd.c code to be found.
+A single function (wrapper) around the whirlpool hashing process.
 
-
-No correct hashes yielded on 32-bit system !
-
-   Correct hashes yielded on 64-bit system .
+Example of usage to be found at the end of the wmd.c file.
 
 ---
 
-wikipedia pages:
+**Wikipedia pages:**
 
 https://en.wikipedia.org/wiki/Whirlpool_(hash_function)
 
@@ -25,17 +28,12 @@ https://en.wikipedia.org/wiki/Paulo_S._L._M._Barreto
 
 https://en.wikipedia.org/wiki/Vincent_Rijmen
 
-archives:
+---
+
+**More information and archives for download:**
 
 https://web.archive.org/web/20171129084214/http://www.larc.usp.br/~pbarreto/WhirlpoolPage.html
 
 https://web.archive.org/web/20171116050738/http://www.larc.usp.br/~pbarreto/
 
 https://web.archive.org/web/20171026140501/http://www.larc.usp.br/~pbarreto/whirlpool.zip
-
-
-
-
-
-
-
