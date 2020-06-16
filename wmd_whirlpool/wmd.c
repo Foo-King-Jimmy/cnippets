@@ -1,12 +1,23 @@
+/* ident: wmd.c */
+
+
+// FORWARD :
+// char * wmd ( const char * /* data */,
+//              uint32_t /* datalength */,
+//              char * /* hashbuffer */      // min: [ 128 ]
+//            );
 
 
 // ! This function gives correct hashes only if on 64-bit platform !
 
+
 char *
 wmd ( const char * data, uint32_t datalength, char * hashbuffer /* min: [ 128 ] */ ) {
- // general :
+
+
+// general :
  short wmd_csv = 0;  // c.yclic-s.tate-v.ariable
- int  i,   // ! NEEDED, used .
+ int  i,
       indexi = 0;
  char  localhash[ ( 128 + 2 ) ];
  unsigned char  digest[ 64 ];
@@ -609,7 +620,7 @@ wmd ( const char * data, uint32_t datalength, char * hashbuffer /* min: [ 128 ] 
  unsigned char * finbuffer;
  unsigned char * finbitLength;
  int finbufferBits = 0,  // Initialized to silence compiler warnings!
-     finbufferPos  = 0;  // Originally it was:  int finbufferBits, finbufferPos;
+     finbufferPos  = 0;
  unsigned char * findigest;
  // wmd_processBuffer :
  int r;
@@ -658,8 +669,8 @@ wmd ( const char * data, uint32_t datalength, char * hashbuffer /* min: [ 128 ] 
 
       //#1:  //processBuffer(&w);//
       wmd_csv = 1;
-      goto SSS_F_WMD_PROCBUF_IN;
-SSS_F_WMD_PROCBUF_OUT_1:  ;
+      goto WMD_PROCBUF_IN;
+WMD_PROCBUF_OUT_1:  ;
 
       bufferBits = bufferPos = 0;
     }
@@ -682,8 +693,8 @@ SSS_F_WMD_PROCBUF_OUT_1:  ;
 
       //#2:  //processBuffer(&w);//
       wmd_csv = 2;
-      goto SSS_F_WMD_PROCBUF_IN;
-SSS_F_WMD_PROCBUF_OUT_2:  ;
+      goto WMD_PROCBUF_IN;
+WMD_PROCBUF_OUT_2:  ;
 
       bufferBits = bufferPos = 0;
     }
@@ -707,8 +718,8 @@ SSS_F_WMD_PROCBUF_OUT_2:  ;
 
     //#3:  //processBuffer(&w);//
     wmd_csv = 3;
-    goto SSS_F_WMD_PROCBUF_IN;
-SSS_F_WMD_PROCBUF_OUT_3:  ;
+    goto WMD_PROCBUF_IN;
+WMD_PROCBUF_OUT_3:  ;
 
     finbufferPos = 0;
   }
@@ -718,8 +729,8 @@ SSS_F_WMD_PROCBUF_OUT_3:  ;
 
   //#4:  //processBuffer(&w);//
   wmd_csv = 4;
-  goto SSS_F_WMD_PROCBUF_IN;
-SSS_F_WMD_PROCBUF_OUT_4:  ;
+  goto WMD_PROCBUF_IN;
+WMD_PROCBUF_OUT_4:  ;
 
   for( i = 0; i < 8; ++i ) {
     findigest[ 0 ] = (unsigned char) ( w.Shash[ i ] >> 56 );
@@ -736,19 +747,17 @@ SSS_F_WMD_PROCBUF_OUT_4:  ;
   w.SbufferPos  = finbufferPos;
 
   // end :
-  // flush :
-  for( ; sizeof(digest) > indexi; ++indexi )
+  for( ; sizeof(digest) > indexi; ++indexi ) {
     (void) sprintf( localhash + indexi * 2, "%02x", digest[ indexi ] );
+  }
   (void) memcpy( hashbuffer, localhash, (size_t) 128 );
-  // paranoid cleanup :
-  datalength = (uint32_t) 0;
 
 
  return hashbuffer;
 
 
 // wmd_processBuffer :
-SSS_F_WMD_PROCBUF_IN:  ;
+WMD_PROCBUF_IN:  ;
 
   procbuffer = w.Sbuffer;
   for( i = 0; i < 8; ++i, procbuffer += 8 ) {
@@ -948,12 +957,40 @@ SSS_F_WMD_PROCBUF_IN:  ;
   w.Shash[6] ^= state[6] ^ block[6];
   w.Shash[7] ^= state[7] ^ block[7];
 
-  if( 4 == wmd_csv ) goto SSS_F_WMD_PROCBUF_OUT_4;
-  if( 3 == wmd_csv ) goto SSS_F_WMD_PROCBUF_OUT_3;
-  if( 2 == wmd_csv ) goto SSS_F_WMD_PROCBUF_OUT_2;
-  if( 1 == wmd_csv ) goto SSS_F_WMD_PROCBUF_OUT_1;
+  if( 4 == wmd_csv )  goto WMD_PROCBUF_OUT_4;
+  if( 3 == wmd_csv )  goto WMD_PROCBUF_OUT_3;
+  if( 2 == wmd_csv )  goto WMD_PROCBUF_OUT_2;
+  if( 1 == wmd_csv )  goto WMD_PROCBUF_OUT_1;
 
  return hashbuffer;  // BOGUS ! - to silence a compiler warning.
 }
 
+/* *************************************************************** */
+
+/** TEST:
+
+#include  <stdio.h>
+
+int
+main ( int argc, char **argv ) {
+
+ const char   example__1[ ] = "";
+ const char   solution_1[ ] = "";
+       char   buffer[ 129 ];
+       char * resultptr = NULL;
+
+  (void) printf( "\n\n TEST started:\n\n" );
+
+  (void) printf( "   - example to hash:  %s\n", example__1 );
+  (void) memset( buffer, 0, sizeof(buffer) );
+  resultptr = wmd( example__1, (uint32_t) strlen( example__1 ), buffer );
+  if( NULL != resultptr )  (void) printf( "   - generated hash:   %s\n", resultptr  );
+  (void) printf( "   - solution to be:   %s\n", solution_1 );
+  (void) printf( "\n TEST finished.\n\n" );
+  (void) fflush( NULL );
+
+ return 0;
+}
+
+**/
 
