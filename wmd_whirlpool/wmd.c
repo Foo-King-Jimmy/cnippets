@@ -12,7 +12,7 @@
 //              char * /* hashbuffer */      // min: [ 128 ]
 //            );
 
-// ! This function gives correct hashes only if on 64-bit platform !
+// ! This function gives correct hashes only on 64-bit platforms !
 
 
 char *
@@ -968,6 +968,7 @@ WMD_PROCBUF_IN:  ;
 
  return hashbuffer;  // BOGUS ! - to silence a compiler warning.
 }
+
 
 /** TEST: ********************************************************* **
 
