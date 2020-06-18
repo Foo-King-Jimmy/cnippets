@@ -28,6 +28,8 @@
 #define   DBG       if( 1 )
 #define   TIMEGOV   "https://www.time.gov/"
 #define   UAGENT    "Hill-Billy Gates wanted to air the house, he opened the ..."
+#define   CURL_CACERT_PEM    "/path/to/curl/cacert.pem"
+
 
 /**  FORWARDS  **/
 
@@ -245,8 +247,9 @@ curltofile( const char * url, FILE * outfile, int mode ) {
     return -1;
   }
   // TLS :
-  (void) curl_easy_setopt( curlctx, CURLOPT_SSL_VERIFYPEER, 0L );
-  (void) curl_easy_setopt( curlctx, CURLOPT_SSL_VERIFYHOST, 0L );
+  (void) curl_easy_setopt( curlctx, CURLOPT_SSL_VERIFYPEER, 1L );
+  (void) curl_easy_setopt( curlctx, CURLOPT_SSL_VERIFYHOST, 2L );
+  (void) curl_easy_setopt( curlctx, CURLOPT_CAINFO, CURL_CACERT_PEM );
   // GENERAL OPTIONS :
   (void) curl_easy_setopt( curlctx, CURLOPT_WRITEDATA,      outfile );
   (void) curl_easy_setopt( curlctx, CURLOPT_WRITEFUNCTION,  curlwritecb );
