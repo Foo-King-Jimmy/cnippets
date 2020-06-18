@@ -7,6 +7,7 @@
 // USAGE:   $  cminify  source_and_destination_filename
 //    or    $  cminify  source_filename   destination_filename
 
+
 #include  <stdio.h>
 #include  <stdlib.h>
 #include  <string.h>
