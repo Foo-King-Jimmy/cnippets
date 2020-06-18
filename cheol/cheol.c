@@ -8,6 +8,7 @@
 //         cheol.c  -u   file   => [unix] delete all \r, only \n left
 //         cheol.c  -w   file   => [win]  all ending will be \r\n
 
+
 const char * tempfile = "/tmp/cheol.run.tmp.file";
 
 #include  <stdio.h>
